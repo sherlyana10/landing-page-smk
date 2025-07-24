@@ -9,6 +9,38 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
+
+h1 span.title-outline {
+  color: #dc3545; /* Merah */
+  text-shadow: 2px 2px 4px #fff;
+}
+
+header .lead {
+  color: white;
+}
+
+#tentang h2 {
+  animation: fadeInDown 1.2s ease-in-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tambah margin top negatif buat naikkan lokasi dan daftar */
+#lokasi,
+#daftar {
+  margin-top: -40px;
+}
+
+
     body {
       background-color: #f5f5f5;
       color: #333;
@@ -25,24 +57,27 @@
       z-index: 2;
     }
 
-    .card-scroll {
-      display: flex;
-      overflow-x: auto;
-      gap: 1rem;
-      padding-bottom: 1rem;
-    }
-
     .card-scroll .card {
-      min-width: 250px;
-      flex: 0 0 auto;
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    }
+  min-width: 250px;
+  flex: 0 0 auto;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.3s ease-in-out;
+}
 
-    .card-scroll .card:hover {
-      transform: scale(1.08);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-      cursor: pointer;
-    }
+/* Saat muncul ke layar */
+.card-scroll .card.aos-animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Hover animasi */
+.card-scroll .card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
 
     .form-control,
     .btn {
@@ -106,6 +141,8 @@
         min-width: 200px;
       }
     }
+
+
   </style>
 </head>
 
@@ -132,7 +169,7 @@
       </div>
     </nav>
     <div class="position-relative z-2 d-flex flex-column align-items-center justify-content-center text-center" style="height: 100%;">
-      <h1 class="display-4 fw-bold">Selamat Datang di <br> SMK 17 Agustus 1945 Muncar</h1>
+      <h1 class="display-4 fw-bold">Selamat Datang di <br><span class="title-outline">SMK 17 Agustus 1945 Muncar</span></h1>
       <p class="lead">Mandiri, Terampil, SIAP KERJA!</p>
       <a href="#daftar" class="btn btn-daftar mt-3 fw-bold">Daftar Sekarang</a>
     </div>
@@ -168,7 +205,8 @@
 
       <section class="py-5 bg-white" id="tentang">
     <div class="container">
-      <h2 class="text-center text-danger mb-4 fw-bold">Tentang Kami</h2>
+      <h2 class="text-center text-danger mb-4 fw-bold" data-aos="fade-down">Tentang Kami</h2>
+>Tentang Kami</h2>
       <div class="row">
         <div class="col-md-6" data-aos="fade-right">
           <h4>Sejarah Singkat</h4>
@@ -195,8 +233,8 @@
     </div>
   </section>
 
-      <section class="py-5" id="jurusan" style="background: linear-gradient(to right, white, #de3948);">
-  <div class="container">
+<section class="py-5" id="jurusan" style="background: linear-gradient(to right, white, #de3948);">
+  <div class="container " data-aos="fade-right">
     <h2 class="text-center mb-4 fw-bold">Macam-macam Jurusan</h2>
     <div class="d-flex overflow-auto gap-3 px-2">
 
@@ -271,7 +309,7 @@
 </section>
 
       <section class="py-5 bg-light" id="ekstra">
-  <div class="container">
+  <div class="container" data-aos="fade-left">
     <h2 class="text-center text-danger mb-4">Ekstrakurikuler</h2>
     <div class="d-flex overflow-auto gap-4 pb-3" style="scroll-snap-type: x mandatory;">
       
@@ -325,7 +363,7 @@
 </section>
       
 
-  <section class="py-5" id="lokasi" style="background: linear-gradient(to right, white, #de3948);">
+  <section class="py-5" id="lokasi" style="background: linear-gradient(to right, white, #de3948); margin-top: -40px;">
     <div class="container">
       <h2 class="text-center mb-4" data-aos="fade-up">Lokasi & Informasi Kontak</h2>
       <div class="row">
@@ -342,7 +380,7 @@
     </div>
   </section>
 
-  <section class="py-5" id="daftar">
+  <section class="py-5" id="daftar" style="margin-top: -40px;">
   <div class="container">
     <div class="row align-items-center">
       
